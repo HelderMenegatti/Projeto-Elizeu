@@ -5776,6 +5776,7 @@ License - nucleoapp.com/license/
 .img-fluid {
   width: 50%;
   padding: 30px;
+
 }
 
 .text-image-p-2 {
@@ -5784,6 +5785,21 @@ License - nucleoapp.com/license/
   padding-top: 60px;
   padding-left: 30px;
   padding-right: 40px;
+}
+
+@media screen and (min-width: 480px) {
+  .img-fluid {
+    width: 50%;
+    padding: 30px;
+  }
+
+  .text-image-p-2 {
+    font-size: 30px !important;
+    color: rgb(158, 158, 158);
+    padding-top: 60px;
+    padding-left: 30px;
+    padding-right: 40px;
+  }
 }
 
  /* Alterei aqui  */
