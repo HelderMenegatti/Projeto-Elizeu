@@ -5766,27 +5766,27 @@ License - nucleoapp.com/license/
 }
 
 /* Alterei aqui */
-.image-2 {
 
+.image-2 {
   background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(66, 66, 66), black);
   margin-top: 30px;
-  padding: 56px;
-  display: block;
+  display: flex;
 }
 
-.image-2 .image-inter-2 {
+.img-fluid {
   width: 50%;
-  margin: 30px;
-  border-radius: 0px;
-  display: inline-block;
+  padding: 30px;
 }
 
-.image-2 .text-image-2 .text-image-p-2 {
+.text-image-p-2 {
   font-size: 30px !important;
   color: rgb(231, 0, 0);
-  display: block;
+  padding-top: 128px;
+  padding-left: 30px;
+  padding-right: 40px;
 }
-/* Alterei aqui */
+
+ /* Alterei aqui  */
 
 .carousel-indicators>li {
   background-color: rgba(204, 204, 204, 0.49);
