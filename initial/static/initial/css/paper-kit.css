@@ -5767,40 +5767,7 @@ License - nucleoapp.com/license/
 
 /* Alterei aqui */
 
-.image-2 {
-  background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(66, 66, 66), black);
-  margin-top: 30px;
-  display: flex;
-}
 
-.img-fluid {
-  width: 50%;
-  padding: 30px;
-
-}
-
-.text-image-p-2 {
-  font-size: 30px !important;
-  color: rgb(158, 158, 158);
-  padding-top: 60px;
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-@media screen and (min-width: 480px) {
-  .img-fluid {
-    width: 50%;
-    padding: 30px;
-  }
-
-  .text-image-p-2 {
-    font-size: 30px !important;
-    color: rgb(158, 158, 158);
-    padding-top: 60px;
-    padding-left: 30px;
-    padding-right: 40px;
-  }
-}
 
  /* Alterei aqui  */
 

@@ -1,0 +1,50 @@
+.image-2 {
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(66, 66, 66), black);
+    margin-top: 30px;
+    display: flex;
+  }
+  
+  .img-fluid {
+    width: 50%;
+    padding: 30px;
+  }
+  
+  .text-image-p-2 {
+    font-size: 30px !important;
+    color: rgb(158, 158, 158);
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+  }
+  
+  @media screen and (max-width: 800px) {
+  
+    .title-brand {
+      max-width: 730px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+      color: #FFFFFF;
+      display: block;
+      font-size: 8px;
+    }
+  
+    .image-2 {
+      background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(66, 66, 66), black);
+      margin-top: 30px;
+      display: block;
+    }
+  
+    .img-fluid {
+      width: 100%;
+      padding: 30px;
+    }
+  
+    /* .text-image-p-2 {
+      font-size: 10px !important;
+      color: rgb(158, 158, 158);
+      padding-top: 60px;
+      padding-left: 30px;
+      padding-right: 40px;
+    } */
+  }
