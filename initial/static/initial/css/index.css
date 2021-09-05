@@ -17,6 +17,7 @@
     padding-right: 40px;
   }
   
+
   @media screen and (max-width: 800px) {
   
     .title-brand {
@@ -47,4 +48,8 @@
       padding-left: 30px;
       padding-right: 40px;
     } */
+  }
+
+#image-assignment {
+  background-image: linear-gradient(to bottom, black, white) !important;
   }

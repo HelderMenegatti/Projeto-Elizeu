@@ -5765,11 +5765,10 @@ License - nucleoapp.com/license/
   box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
 }
 
-/* Alterei aqui */
-
-
-
- /* Alterei aqui  */
+.carousel-inner .carousel-item img {
+  width: 100%;
+  padding: 7px;
+}
 
 .carousel-indicators>li {
   background-color: rgba(204, 204, 204, 0.49);
@@ -5862,7 +5861,7 @@ License - nucleoapp.com/license/
 }
 
 .footer {
-  background-color: #FFFFFF;
+  background-color: #171717;
   line-height: 36px;
 }
 
