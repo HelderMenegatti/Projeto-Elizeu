@@ -8,19 +8,10 @@ def index(request):
 
 
 def sign_up(request):
-    template_name = "user/singup.html"
+    template_name = "initial/singup.html"
     if request.method == "POST":
         email = request.POST['email']
         username = request.POST['username']
         password= request.POST['password']
-        print("O EMAIL ENVIADO FOI", email)
-        print("O username é", username)
-        print("A senha enviada foi", password)
-
-        user = User.objects.create_user(username, email, password)
-        print(user)
-        print(user)
-        print(user)
-        print(user)
-        print(user)
+        User.objects.create_user(username, email, password)
     return render(request, template_name)
