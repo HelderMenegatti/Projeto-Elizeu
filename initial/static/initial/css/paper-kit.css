@@ -6986,6 +6986,7 @@ License - nucleoapp.com/license/
 .carousel-caption .title,
 .carousel-caption .info-title {
   color: #FFFFFF;
+  text-align: center
 }
 
 [class*="features-"],

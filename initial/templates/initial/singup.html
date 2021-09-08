@@ -19,7 +19,6 @@ The above copyright notice and this permission notice shall be included in all c
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img//apple-icon.png">
@@ -38,7 +37,6 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
-
 <body class="register-page sidebar-collapse">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
@@ -93,24 +91,7 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- <div class="page-header" style="background-image: url('../assets/img/login-image.jpg');">
 
     <div class="container">
-        <div class="row">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div class="row"
         <div class="page-header" style="background-image: url('../assets/img/login-image.jpg');">
             <div class="filter"></div>
                 <div class="container">
@@ -152,13 +133,13 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
     </div>
 </div> -->
-  <div class="page-header" style="background-image: url('../assets/img/login-image.jpg');">
+  <div class="page-header" style="background-image: url({% static 'initial/images/uriel-soberanes.jpg' %});">
     <div class="filter"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-4 ml-auto mr-auto">
           <div class="card card-register">
-            <h3 class="title mx-auto">Welcome</h3>
+            <h3 class="title mx-auto">cadastro password</h3>
             <div class="social-line text-center">
               <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
                 <i class="fa fa-facebook-square"></i>
@@ -166,16 +147,23 @@ The above copyright notice and this permission notice shall be included in all c
               <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
                 <i class="fa fa-google-plus"></i>
               </a>
-              <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
+              <!-- <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
                 <i class="fa fa-twitter"></i>
-              </a>
+              </a> -->
             </div>
             <form class="register-form">
-              <label>Email</label>
-              <input type="text" class="form-control" placeholder="Email">
+              {% csrf_token %}
+              {% if token %}
+              <label>Username</label>
+              <input type="text" class="form-control" placeholder="Username">
               <label>Password</label>
               <input type="password" class="form-control" placeholder="Password">
-              <button class="btn btn-danger btn-block btn-round">Register</button>
+              <label>Confirmar password</label>
+              <input type="password" class="form-control" placeholder="Password">
+              <button class="btn btn-danger btn-block btn-round">Cadastrar password</button>
+
+              
+              {% endif %}
             </form>
             <div class="forgot">
               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
