@@ -13,7 +13,7 @@ def send_message(tok):
     msg['subject'] = "Primeito teste de disparo de email"
     msg['From'] = "heldermenegatti720@gmail.com" 
     msg['To'] = "heldermenegatti720@gmail.com"
-    password = "Ratogordo720" #  senha do email from
+    password = "" #  senha do email from
     msg.add_header('content-Type', 'text/html')
     msg.set_payload(corpo_email)
 
