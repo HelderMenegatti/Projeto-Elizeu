@@ -1,11 +1,12 @@
 from os import error
-from django.db import reset_queries
+from django import http
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from .models import Token
 from .message.trigger import send_message
 from django.http import HttpResponse
-from .models import Token
 import datetime
+from uuid import uuid4
 
 
 
@@ -18,24 +19,28 @@ def index(request):
 def sign_up(request):
     template_name = "initial/singup.html"
     if request.method == "POST":
+        # user = request.POST
         email = request.POST['email']
         username = request.POST['username']
-        token = request.POST['csrfmiddlewaretoken']
 
+        User.objects.create_user(username=username, email=email)
 
-        up_token = Token.objects.create(token=token)
+        Rand_token = uuid4()
+        Token.objects.create(token=Rand_token)
 
-        # send_message(up_token)
+        send_message(Rand_token, email)
+        return HttpResponse("Emai enviado", status=200)
 
-        # User.objects.create_user(username, email)
     elif request.method == "GET":
-        tok = request.GET['token']
-        print(">>>>>>>>>> ", tok)
-        context = {
-            'token': tok,
-        }
-        return render(request, template_name, context)
-    else:
+        token_1 = request.GET['token']
+        query = Token.objects.filter(token=token_1)
+        for token in query:
+            tokens = token.token
+            if token_1 == tokens:
+                context = {
+                    'token': token_1,
+                }
+                return render(request, template_name ,context)
         return HttpResponse("não auto", status=401)
 
 
