@@ -237,7 +237,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <i class="fa fa-twitter"></i>
                 </a> -->
               </div>
-              <form action="{% url 'registro' %}" method="POST" class="register-form">
+              <form action="{% url 'registro' %}" method="POST" class="register-form" name="formulario">
                 {% csrf_token %}
                 <label>Username</label>
                 <div class="input-group form-group-no-border">
@@ -246,7 +246,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <i class="nc-icon nc-email-85"></i>
                     </span>
                   </div>
-                  <input type="username" name="username" class="form-control" placeholder="username">
+                  <input type="username"  required name="username" class="form-control" placeholder="username">
                 </div>
 
                 <label>Email</label>
@@ -256,7 +256,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <i class="nc-icon nc-email-85"></i>
                     </span>
                   </div>
-                  <input type="email" name="email" class="form-control" placeholder="Email">
+                  <input type="email" required name="email" class="form-control" placeholder="Email">
                 </div>
 
                 <!-- <label>Password</label>
@@ -269,7 +269,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <input type="password" name="password" class="form-control" placeholder="Password">
                 </div> -->
 
-                <button type="Submit" class="btn btn-danger btn-block btn-round">Register</button>
+                <button type="Submit" class="btn btn-danger btn-block btn-round" onclick="validar()">Register</button>
               </form>
               <div class="forgot">
                 <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
@@ -364,6 +364,21 @@ The above copyright notice and this permission notice shall be included in all c
         }, 500);
       });      
     </script>
+    <!-- <script>
+      // Função valida
+      function  validar(){
+        // pegando o valor do nome
+        var username = formulario.username;
+        
+        // verifivar se o nome esta vazio
+        if(username.value == ""){
+          alert("Username não informado");
+
+          // deixa o input com o focus
+          username.focus()
+        }
+      }
+    </script> -->
 </body>
 
 </html>
