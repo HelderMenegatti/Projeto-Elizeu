@@ -1,6 +1,7 @@
+from django.contrib import messages 
 from os import error
 from django import http
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import RegisterForme
 from .models import Token
@@ -18,35 +19,42 @@ def index(request):
 
 
 def sign_up(request):
+
     template_name = "initial/singup.html"
     if request.method == "POST":
+
+        username = request.POST['username']
+        email = request.POST['email']
+
         register_form = RegisterForme(request.POST)
         if register_form.is_valid():
             register_form.save()
-            username = request.POST['username']
-            email = request.POST['email']
-            
+
             user = User.objects.get(username=username)
             id = user.id
             user.is_active = False
             user.save()
-            
-
-            # User.objects.create_user(is_active=False)
+    
             Rand_token = uuid4()
             Token.objects.create(token=Rand_token, id_user=id)
 
             send_message(Rand_token, email)
-            return HttpResponse("Emai enviado", status=200)
+
+            messages.success(request, "Account successfully created!")
+            return redirect("index")            
+            # return HttpResponse("Emai enviado", status=200)
+        else:
+
+            return render(request, 'initial/index.html', {'form': RegisterForme()}) 
 
     elif request.method == "GET":
-        token_1 = request.GET['token']
-        query = Token.objects.filter(token=token_1)
-        for token in query:
-            tokens = token.token
-            if token_1 == tokens:
+        request_token = request.GET['token']
+        query = Token.objects.filter(token=request_token)
+        for q in query:
+            tokens = q.token
+            if request_token == tokens:
                 context = {
-                    'token': token_1,
+                    'token': request_token,
                 }
                 return render(request, template_name ,context)
         return HttpResponse("não auto", status=401)
