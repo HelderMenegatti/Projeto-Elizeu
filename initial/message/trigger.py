@@ -1,5 +1,6 @@
 import smtplib
 import email.message
+from password import password_delete
 
 def send_message(token, ameil):
     corpo_email = f"""
@@ -13,7 +14,7 @@ def send_message(token, ameil):
     msg['subject'] = "Primeito teste de disparo de email"
     msg['From'] = "heldermenegatti720@gmail.com" 
     msg['To'] = f"{ameil}"
-    password = "" #  senha do email from
+    password = password_delete() #  senha do email from
     msg.add_header('content-Type', 'text/html')
     msg.set_payload(corpo_email)
 

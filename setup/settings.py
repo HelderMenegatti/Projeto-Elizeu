@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth',
     'rest_auth.registration',
+    'bootstrap3',
 ]
 
 SITE_ID = 1

@@ -3,3 +3,4 @@ psycopg2-binary
 djangorestframework 
 django-rest-auth[with_social]
 ipdb
+django-bootstrap3

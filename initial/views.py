@@ -29,7 +29,7 @@ def sign_up(request):
         register_form = RegisterForme(request.POST)
         if register_form.is_valid():
             register_form.save()
-
+            
             user = User.objects.get(username=username)
             id = user.id
             user.is_active = False
@@ -40,12 +40,17 @@ def sign_up(request):
 
             send_message(Rand_token, email)
 
-            messages.success(request, "Account successfully created!")
-            return redirect("index")            
-            # return HttpResponse("Emai enviado", status=200)
+            return HttpResponse("Emai enviado", status=200)
+            # else:
+            #     return render(request, "home.html", {'form':RegisterForme})            
+            #     # form = RegisterForme(None)   
+            #     # return render(request, 'home.html', {'form':form})
+            #     # return render(request, 'initial/index.html', {'form': RegisterForme()}) 
         else:
-
-            return render(request, 'initial/index.html', {'form': RegisterForme()}) 
+            form = RegisterForme()
+            print(">>>>>>>>>>>>>>>>>>> Aqui" )
+            return render(request, 'initial/index.html', {'form':form})
+ 
 
     elif request.method == "GET":
         request_token = request.GET['token']
@@ -58,7 +63,4 @@ def sign_up(request):
                 }
                 return render(request, template_name ,context)
         return HttpResponse("não auto", status=401)
-
-
-
 
