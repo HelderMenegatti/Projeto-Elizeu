@@ -17,7 +17,7 @@ The above copyright notice and this permission notice shall be included in all c
 {% load static %}
 
 {% load bootstrap3 %}
-{% bootstrap_messages %}
+<!-- {% bootstrap_messages %} -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -241,10 +241,14 @@ The above copyright notice and this permission notice shall be included in all c
                   <i class="fa fa-twitter"></i>
                 </a> -->
               </div>
+              <!-- {% for success in field.success %}
+                <section class="alert alert-danger" role="alert">
+                    {{ field.success }}
+                </section>
+            {% endfor %} -->
               <form action="{% url 'registro' %}" method="POST" class="register-form" name="formulario">
                 {% csrf_token %}
-
-                {% comment %} {% bootstrap_form form %} {% endcomment %}
+                <!-- {% comment %} {% bootstrap_form form %} {% endcomment %} -->
                 <label>Username</label>
                 <div class="input-group form-group-no-border">
                   <div class="input-group-prepend">
@@ -253,6 +257,16 @@ The above copyright notice and this permission notice shall be included in all c
                     </span>
                   </div>
                   <input type="username"  required name="username" class="form-control" placeholder="username">
+                  
+                  <!-- {% bootstrap_messages %} -->
+                  
+                  {% if messages %}
+                  <div class="messages">
+                      {% for message in messages %}
+                      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                      {% endfor %}
+                  </div>
+                  {% endif %}
                 </div>
 
                 <label>Email</label>

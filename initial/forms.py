@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.forms import fields
+from initial.validation import *
 
 class RegisterForme(forms.ModelForm):
     model = User
@@ -14,13 +15,14 @@ class RegisterForme(forms.ModelForm):
         fields = ['username', 'email']
 
     
-    # def clean(self):
-    #     super(RegisterForme, self).clean()
-    #     username = self.cleaned_data.get('username')
-    #     email = self.cleaned_data.get("email")  
+    def clean(self):
+        super(RegisterForme, self).clean()
+        username = self.cleaned_data.get('username')       
+        email = self.cleaned_data.get("email")  
 
-    #     if len(username) > 5:
-    #         self._errors['username'] = self.error_class([
-    #             'Minimum 5 characters required'])
-        
-    #     return self.cleaned_data
+        validation_number_caractere(self, username)
+
+        # elif username in User.objects.all():
+        #     self._errors['username'] = self.error_class([
+        #         'Nome de usuário já existe'])
+        return self.cleaned_data
