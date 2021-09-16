@@ -21,8 +21,9 @@ class RegisterForme(forms.ModelForm):
         email = self.cleaned_data.get("email")  
 
         validation_number_caractere(self, username)
+        
+        user_exists(self, username)
 
-        # elif username in User.objects.all():
-        #     self._errors['username'] = self.error_class([
-        #         'Nome de usuário já existe'])
+        the_email_field_cannot_be_blank(self, email)
+
         return self.cleaned_data

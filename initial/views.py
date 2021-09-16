@@ -38,7 +38,9 @@ def sign_up(request):
             Rand_token = uuid4()
             Token.objects.create(token=Rand_token, id_user=id)
 
-            messages.success(request,"Email enviado com sucesso!!!")
+            # send_message(Rand_token, email)
+
+            # messages.success(request,"Email enviado com sucesso!!!")
             return render(request, 'initial/index.html', {'form':register_form})
             # return HttpResponse("Emai enviado", status=200)
             # else:
@@ -50,11 +52,11 @@ def sign_up(request):
             for error in register_form.errors.values():
                 messages.error(request, f'{error}')
                 register_form = RegisterForme()
-                template_name = "initial/index.html"
-                # context = {
-                #     "form":register_form
-                # }
-                return render(request, template_name)
+
+                context = {
+                    "form":register_form
+                }
+                return render(request, "initial/index.html", context)
 
             # form = RegisterForme()
             # print(">>>>>>>>>>>>>>>>>>> Aqui" )
