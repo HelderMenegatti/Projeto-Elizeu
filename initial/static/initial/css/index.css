@@ -56,11 +56,14 @@
 
 
 /* mensagens de erro */
-/* 
-.messages {
-  margin-top: 5px;
 
-  background-color: #ec4a4a85;
-  border-radius: 10px;
-  padding-right: 12px;
-} */
+.messages {
+  margin-left: -49px;
+  margin-top: 10px;
+}
+
+.messages .error {
+  list-style-type: none;
+  padding-left: 10px;
+  color: rgb(255, 255, 255);
+}

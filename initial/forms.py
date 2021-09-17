@@ -18,8 +18,9 @@ class RegisterForme(forms.ModelForm):
     def clean(self):
         super(RegisterForme, self).clean()
         username = self.cleaned_data.get('username')       
-        email = self.cleaned_data.get("email")  
-
+        email = self.cleaned_data.get("email")
+        email_2 = self.cleaned_data.get("email-2")  
+        print(">>>>>>>>>>>>>>>>>", email)
         validation_number_caractere(self, username)
         
         user_exists(self, username)

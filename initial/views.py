@@ -25,6 +25,7 @@ def sign_up(request):
 
         username = request.POST['username']
         email = request.POST['email']
+        email_2 = request.POST['email-2']
 
         register_form = RegisterForme(request.POST)
         if register_form.is_valid():
@@ -40,7 +41,7 @@ def sign_up(request):
 
             # send_message(Rand_token, email)
 
-            # messages.success(request,"Email enviado com sucesso!!!")
+            messages.success(request,"Email enviado com sucesso!!!")
             return render(request, 'initial/index.html', {'form':register_form})
             # return HttpResponse("Emai enviado", status=200)
             # else:
