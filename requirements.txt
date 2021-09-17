@@ -1,3 +1,6 @@
 Django
 psycopg2-binary
-celery
+djangorestframework 
+django-rest-auth[with_social]
+ipdb
+django-bootstrap3
