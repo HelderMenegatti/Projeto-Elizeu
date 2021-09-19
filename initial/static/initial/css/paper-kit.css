@@ -4961,6 +4961,7 @@ License - nucleoapp.com/license/
   top: 85px;
   width: 100%;
   z-index: 3;
+  color: black;,
 }
 
 .navbar:not(.navbar-transparent) .alert {

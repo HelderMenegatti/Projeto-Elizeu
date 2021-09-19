@@ -43,6 +43,7 @@ The above copyright notice and this permission notice shall be included in all c
 {% block content %}
 <body class="index-page sidebar-collapse">
   <!-- Navbar -->
+
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
     <div class="container">
       <div class="navbar-translate">
@@ -96,10 +97,22 @@ The above copyright notice and this permission notice shall be included in all c
         </ul>
       </div>
     </div>
+    <div>
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                  {% bootstrap_messages %}
+                </li>
+            {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
   </nav>
   <!-- End Navbar -->
   <!-- <div class="page-header section-dark" style="background-image: url({% static 'initial/images/antoine-barres.jpg' %})"> -->
   <div class="page-header section-dark" style="background-image: url({% static 'initial/images/earth.jpg' %})">
+
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">
@@ -267,19 +280,19 @@ The above copyright notice and this permission notice shall be included in all c
                   </div>
                   {% endif %} -->
 
-                  <div>
-                  {% if messages %}
-                  <ul class="messages">
-                      {% for message in messages %}
-                      {% if message.tags == 'error' %}
-                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                        {% bootstrap_messages %}
-                      </li>
-                      {% endif %}
-                      {% endfor %}
-                  </ul>
-                  {% endif %}
-                  </div>
+                  <!-- <div>
+                    {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                            {% if message.tags == 'error' %}
+                              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                {% bootstrap_messages %}
+                              </li>
+                            {% endif %}
+                          {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div> -->
 
                 </div>
                 <label>Email</label>
@@ -298,7 +311,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <i class="nc-icon nc-email-85"></i>
                     </span> -->
                   </div>
-                  <input type="email" required name="email-2" class="form-control" placeholder="Email">
+                  <input type="email" required name="email_two" class="form-control" placeholder="Email">
                 </div>
                 <!-- <label>Password</label>
                 <div class="input-group form-group-no-border">
@@ -312,9 +325,9 @@ The above copyright notice and this permission notice shall be included in all c
 
                 <button type="Submit" class="btn btn-danger btn-block btn-round" onclick="validar()">Register</button>
               </form>
-              <div class="forgot">
+              <!-- <div class="forgot">
                 <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
-              </div>
+              </div> -->
             </div>
             <div class="col text-center">
               <a href="./examples/register-page.html" class="btn btn-outline-neutral btn-round btn-lg" target="_blank">View Register Page</a>

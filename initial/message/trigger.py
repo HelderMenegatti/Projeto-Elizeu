@@ -12,7 +12,8 @@ def send_message(token, ameil):
 
     msg = email.message.Message()
     msg['subject'] = "Primeito teste de disparo de email"
-    msg['From'] = "querybusines31@gmail.com" 
+    # msg['From'] = "querybusines31@gmail.com"
+    msg['From'] = "heldermenegatti720@gmail.com"
     msg['To'] = f"{ameil}"
     password = password_email() #  senha do email from
     msg.add_header('content-Type', 'text/html')

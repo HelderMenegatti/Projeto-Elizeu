@@ -1,6 +1,4 @@
 from django.contrib import messages 
-
-from django import http
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import RegisterForme
@@ -9,8 +7,6 @@ from .message.trigger import send_message
 from django.http import HttpResponse
 import datetime
 from uuid import uuid4
-
-
 
 
 def index(request):
@@ -25,9 +21,8 @@ def sign_up(request):
 
         username = request.POST['username']
         email = request.POST['email']
-        email_2 = request.POST['email-2']
-
         register_form = RegisterForme(request.POST)
+
         if register_form.is_valid():
             register_form.save()
             
@@ -39,16 +34,11 @@ def sign_up(request):
             Rand_token = uuid4()
             Token.objects.create(token=Rand_token, id_user=id)
 
-            # send_message(Rand_token, email)
+            send_message(Rand_token, email)
 
-            messages.success(request,"Email enviado com sucesso!!!")
+            messages.success(request,"A mensagem de cadastro de senha foi enviada para seu email com sucesso!!!")
             return render(request, 'initial/index.html', {'form':register_form})
-            # return HttpResponse("Emai enviado", status=200)
-            # else:
-            #     return render(request, "home.html", {'form':RegisterForme})            
-            #     # form = RegisterForme(None)   
-            #     # return render(request, 'home.html', {'form':form})
-            #     # return render(request, 'initial/index.html', {'form': RegisterForme()}) 
+
         else:
             for error in register_form.errors.values():
                 messages.error(request, f'{error}')
@@ -58,10 +48,6 @@ def sign_up(request):
                     "form":register_form
                 }
                 return render(request, "initial/index.html", context)
-
-            # form = RegisterForme()
-            # print(">>>>>>>>>>>>>>>>>>> Aqui" )
-            # return render(request, 'initial/index.html', {'form':form})
 
     elif request.method == "GET":
         request_token = request.GET['token']
@@ -83,3 +69,5 @@ def sign_up(request):
         }
         return render(request, template_name, context)
 
+def sign_up_password(request):
+    pass
