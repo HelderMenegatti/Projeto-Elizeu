@@ -28,7 +28,7 @@ def sign_up(request):
             
             user = User.objects.get(username=username)
             id = user.id
-            user.is_active = False
+            user.is_authenticated = False
             user.save()
     
             Rand_token = uuid4()
@@ -69,5 +69,9 @@ def sign_up(request):
         }
         return render(request, template_name, context)
 
+
 def sign_up_password(request):
-    pass
+    template_name = 'initial/login.html'
+    if request.method == "POST":
+        print(">>>>>>>>>>>> eustou aqui")
+        return render(request, template_name)
