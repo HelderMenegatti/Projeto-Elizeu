@@ -1,4 +1,5 @@
 
+from initial.models import Token
 from django import forms
 from django.contrib.auth.models import User
 from initial.validation import *
@@ -33,5 +34,15 @@ class RegisterForme(forms.ModelForm):
 
         return self.cleaned_data
 
-# class SignUpPasswordForme():
-#     pass
+
+class SignUpPasswordForme(forms.ModelForm):
+    password = forms.CharField(max_length=50)
+    password_2 = forms.CharField(max_length=50)
+    name = forms.CharField(max_length=100)
+
+    
+    class Meta:
+      model = User
+      fields = ['password', 'password_2', 'name']
+
+    

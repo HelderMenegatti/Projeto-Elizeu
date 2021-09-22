@@ -157,8 +157,9 @@ The above copyright notice and this permission notice shall be included in all c
               <label>Password</label>
               <input type="password" class="form-control" placeholder="Password" name="password">
               <label>Confirmar password</label>
-              <input type="password" class="form-control" placeholder="Password" name="password2">
-              <button class="btn btn-danger btn-block btn-round">Cadastrar password</button>              
+              <input type="password" class="form-control" placeholder="Password" name="password_2">
+              <button class="btn btn-danger btn-block btn-round">Cadastrar password</button>
+              <input class="form-control"  type="hidden" value="{{token}}" name="tok">              
               {% endif %}
             </form>
             <!-- <div class="forgot">

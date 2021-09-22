@@ -1,7 +1,7 @@
 from django.contrib import messages 
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .forms import RegisterForme
+from .forms import *
 from .models import Token
 from .message.trigger import send_message
 from django.http import HttpResponse
@@ -15,7 +15,6 @@ def index(request):
 
 
 def sign_up(request):
-
     template_name = "initial/singup.html"
     if request.method == "POST":
 
@@ -73,5 +72,14 @@ def sign_up(request):
 def sign_up_password(request):
     template_name = 'initial/login.html'
     if request.method == "POST":
-        print(">>>>>>>>>>>> eustou aqui")
-        return render(request, template_name)
+        token = request.POST['name']
+        q_token = Token.objects.get(token=token).id_user
+        q = User.objects.get(id=q_token)
+        print(q.password)
+        register_form = SignUpPasswordForme(request.POST)
+        if register_form.is_valid():
+            q.password = request.POST['password']
+            q.save()
+            return render(request, template_name)
+
+        return HttpResponse('algo esta errado', status=404)
