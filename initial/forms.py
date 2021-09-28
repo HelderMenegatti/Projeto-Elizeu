@@ -1,7 +1,7 @@
 
 from initial.models import PreUser
 from django import forms
-from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import User
 from initial.validation import *
 
 
@@ -29,6 +29,8 @@ class PreUserForme(forms.ModelForm):
         
         user_exists(self, username)
 
+        user_exists_pre(self, username)
+
         the_email_field_cannot_be_blank(self, email)
 
         validation_email_equal(self, email, email_2)
@@ -54,6 +56,5 @@ class SignUpPasswordForme(forms.ModelForm):
         password = self.cleaned_data.get('password')
         password_2 = self.cleaned_data.get('password_2')
 
-        print('>>>>>>>>>>>>>>>>>>', password)
-
+        password_equal(self, password, password_2)
     

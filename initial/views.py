@@ -30,8 +30,7 @@ def sign_up(request):
             user = PreUser.objects.get(username=username)
             user.token = Rand_token
             user.save()
-            # user.is_authenticated = False
-            # user.save()
+
             send_message(Rand_token, email) 
 
             messages.success(request,"A mensagem de cadastro de senha foi enviada para seu email com sucesso!!!")
@@ -71,19 +70,25 @@ def sign_up_password(request):
     template_name = 'initial/login.html'
 
     if request.method == "POST":
-        print(request.POST)
+
         user = request.POST['user']
         email = request.POST['email']
         password = request.POST['password']
         
-
-
         register_form = SignUpPasswordForme(request.POST)
         if register_form.is_valid():
 
             User.objects.create_user(username =user, email =email, password=password)
-            delete_preuser = PreUser.objects.get(username=user)
-            delete_preuser.delete()   
-            return render(request, template_name)
+            PreUser.objects.get(username=user).delete()
 
-        return HttpResponse('algo esta errado', status=404)
+            messages.success(request,"Cadastro realizado com sucesso!!!")
+            return render(request, template_name, {'form':register_form})
+        else:
+            for error in register_form.errors.values():
+                messages.error(request, f'{error}')
+                register_form = PreUserForme()
+
+                context = {
+                    "form":register_form
+                }
+                return render(request, "initial/singup.html", context)
