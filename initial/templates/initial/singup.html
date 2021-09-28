@@ -155,6 +155,8 @@ The above copyright notice and this permission notice shall be included in all c
               {% csrf_token %}
               {% if token %}
               <label>Password</label>
+              <input class="form-control"  type="hidden" value="{{user.username}}" name="user">
+              <input class="form-control"  type="hidden" value="{{user.email}}" name="email"> 
               <input type="password" class="form-control" placeholder="Password" name="password">
               <label>Confirmar password</label>
               <input type="password" class="form-control" placeholder="Password" name="password_2">
