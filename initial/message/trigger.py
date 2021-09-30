@@ -6,7 +6,7 @@ def send_message(token, ameil):
     corpo_email = f"""
     <h1>Teste</h1>
     <p>Terceiro teste teste de disparo de email</p>
-    <p>http://0.0.0.0:8000/signup?token={token}</p>
+    <p>http://0.0.0.0:8000/signup/password?token={token}</p>
     <p>att Helder</p>
     """
 

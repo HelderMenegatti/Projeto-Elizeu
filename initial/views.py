@@ -10,14 +10,15 @@ import datetime
 from uuid import uuid4
 
 
-def index(request):
-    template_name = "initial/index.html"
-    return render(request, template_name)
-
-
 def sign_up(request):
-    template_name = "initial/singup.html"
-    if request.method == "POST":
+    template_name = "initial/index.html"
+
+    if request.method == "GET":
+        register_form = PreUserForme()
+
+        return render(request, template_name, {'form':register_form})
+        
+    elif request.method == "POST":
 
         username = request.POST['username']
         email = request.POST['email']
@@ -34,7 +35,7 @@ def sign_up(request):
             send_message(Rand_token, email) 
 
             messages.success(request,"A mensagem de cadastro de senha foi enviada para seu email com sucesso!!!")
-            return render(request, 'initial/index.html', {'form':register_form})
+            return redirect('registro')
 
         else:
             for error in register_form.errors.values():
@@ -45,8 +46,22 @@ def sign_up(request):
                     "form":register_form
                 }
                 return render(request, "initial/index.html", context)
+    else:
+        register_form = PreUserForme()
+        template_name = "initial/index.html"
+        context = {
+            "form":register_form
+        }
+        return render(request, template_name, context)
 
-    elif request.method == "GET":
+
+
+
+
+def sign_up_password(request):
+    template_name = 'initial/singup.html'
+
+    if request.method == "GET":
         request_token = request.GET['token']
         query = PreUser.objects.get(token=request_token)
         if request_token == query.token:
@@ -57,32 +72,22 @@ def sign_up(request):
             return render(request, template_name ,context)
         return HttpResponse("não auto", status=401)
 
-    else:
-        register_form = PreUserForme()
-        template_name = "initial/index.html"
-        context = {
-            "form":register_form
-        }
-        return render(request, template_name, context)
 
-
-def sign_up_password(request):
-    template_name = 'initial/login.html'
-
-    if request.method == "POST":
+    elif request.method == "POST":
 
         user = request.POST['user']
         email = request.POST['email']
         password = request.POST['password']
         
         register_form = SignUpPasswordForme(request.POST)
+        
         if register_form.is_valid():
 
-            User.objects.create_user(username =user, email =email, password=password)
+            User.objects.create_user(username=user, email=email, password=password, is_active=False)
             PreUser.objects.get(username=user).delete()
 
             messages.success(request,"Cadastro realizado com sucesso!!!")
-            return render(request, template_name, {'form':register_form})
+            return redirect('login')
         else:
             for error in register_form.errors.values():
                 messages.error(request, f'{error}')
@@ -93,3 +98,16 @@ def sign_up_password(request):
                     'user': query
                 }
                 return render(request, "initial/singup.html", context)
+    else:
+        register_form = PreUserForme()
+        template_name = "initial/index.html"
+        context = {
+            "form":register_form
+        }
+        return render(request, template_name, context)
+
+
+
+def login(request):
+    template_name = 'initial/login.html'
+    return render(request, template_name)
