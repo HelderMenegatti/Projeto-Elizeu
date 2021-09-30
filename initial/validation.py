@@ -50,3 +50,8 @@ def password_equal(self, password, password_2):
     if password != password_2:
         self._errors['email'] = self.error_class([
             'Os Campos de senha estão diferentes'])
+
+def size_password(self, password, password_2):
+    if len(password) <= 6 or len(password) >= 50:
+        self._errors['email'] = self.error_class([
+                    'Senhas tem que ser mior que 6 carqacteres e menor que 50 caracteres'])

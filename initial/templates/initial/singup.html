@@ -165,7 +165,7 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
             <form action="{% url 'uppassword' %}" method="POST" class="register-form" name="uppassword">
               {% csrf_token %}
-              {% if token %}
+              {% comment %} {% if token %} {% endcomment %}
               <label>Password</label>
               <input class="form-control"  type="hidden" value="{{user.username}}" name="user">
               <input class="form-control"  type="hidden" value="{{user.email}}" name="email"> 
@@ -174,7 +174,7 @@ The above copyright notice and this permission notice shall be included in all c
               <input type="password" class="form-control" placeholder="Password" name="password_2">
               <button class="btn btn-danger btn-block btn-round">Cadastrar password</button>
               <input class="form-control"  type="hidden" value="{{token}}" name="tok">              
-              {% endif %}
+              {% comment %} {% endif %} {% endcomment %}
             </form>
             <!-- <div class="forgot">
               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>

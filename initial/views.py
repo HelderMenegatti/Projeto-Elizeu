@@ -87,8 +87,9 @@ def sign_up_password(request):
             for error in register_form.errors.values():
                 messages.error(request, f'{error}')
                 register_form = PreUserForme()
-
+                query = PreUser.objects.get(username=user)
                 context = {
-                    "form":register_form
+                    "form":register_form,
+                    'user': query
                 }
                 return render(request, "initial/singup.html", context)

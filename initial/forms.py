@@ -57,4 +57,6 @@ class SignUpPasswordForme(forms.ModelForm):
         password_2 = self.cleaned_data.get('password_2')
 
         password_equal(self, password, password_2)
+        
+        size_password(self, password, password_2)
     
