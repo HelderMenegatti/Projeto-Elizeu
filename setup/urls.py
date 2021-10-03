@@ -21,5 +21,6 @@ from user.urls import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('initial.urls')),
-    path('', include('user.urls'))
+    path('', include('user.urls')),
+
 ]

@@ -86,7 +86,7 @@ The above copyright notice and this permission notice shall be included in all c
             <a href="https://demos.creative-tim.com/paper-kit-2/docs/1.0/getting-started/introduction.html" target="_blank" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
           </li> -->
           <li class="nav-item">
-            <a href="{% url 'uppassword' %}" target="_blank" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Login Desenvolvedor</a>
+            <a href="{% url 'login' %}"  class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Login Desenvolvedor</a>
           </li>      
           <li class="nav-item">
             <a href="https://demos.creative-tim.com/paper-kit-2/docs/1.0/getting-started/introduction.html" target="_blank" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Login Empresa</a>
@@ -135,14 +135,12 @@ The above copyright notice and this permission notice shall be included in all c
       </a>
     </h6>
   </div>
-  <!-- Inicio dos testes -->
   <div class="image-2">
     <img class="d-block img-fluid" src="{% static 'initial/images/initial.jpg' %}" alt="First slide">   
     <p class="text-image-p-2">
       Um componente Texto Longo tem características similares à Caixa de Texto, porém dá suporte a mais informações, podendo chegar a ter várias linhas listadas nele; por isso é ideal para campos que irão conter textos extensos.
     </p>       
   </div>
-  <!-- <div id="image-assignment"> -->
     <div class="section pt-o" id="image-assignment">
       <div class="container">
         <div class="row">
@@ -188,9 +186,6 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
     </div>
-  <!-- </div>   -->
-
-  <!-- Fim  dos testes -->
   <div class="main">
     <div class="section section-dark section-nucleo-icons">
       <div class="container">
@@ -259,7 +254,7 @@ The above copyright notice and this permission notice shall be included in all c
                     {{ field.success }}
                 </section>
             {% endfor %} -->
-              <form action="{% url 'registro' %}" method="POST" class="register-form" name="formulario">
+              <form action="{% url 'registration' %}" method="POST" class="register-form" name="formulario">
                 {% csrf_token %}
                 <!-- {% comment %} {% bootstrap_form form %} {% endcomment %} -->
                 <label>Username</label>

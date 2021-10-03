@@ -59,4 +59,9 @@ class SignUpPasswordForme(forms.ModelForm):
         password_equal(self, password, password_2)
         
         size_password(self, password, password_2)
+
+
+class loginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
     
