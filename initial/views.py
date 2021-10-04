@@ -132,10 +132,15 @@ def user_login(request):
                 else:
                     return HttpResponse('Desabled account')
             else:
-                return HttpResponse('Invalid login')
+                messages.error(request,"Usuário não existe")
+                return redirect('login')
         else:
-            form = loginForm()
-        return render(request, 'initial/login.html', {'form': form})
+            messages.error(request, 'Nem um campo pode ficar em branco')
+            register_form = loginForm()
+            context = {
+                "form":register_form,
+            }
+            return render(request, template_name, context)
     return HttpResponse("Deu ruim")
 
 @login_required
